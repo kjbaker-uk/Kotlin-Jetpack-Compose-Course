@@ -66,7 +66,7 @@ fun CreateBizCard() {
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                CreateImageProfile()
+                CreateImageProfile(imageResourceId = R.drawable.round_avatar)
                 CreateInfo()
                 Button(onClick = {
                     // Show the portfolio information.
@@ -149,7 +149,7 @@ fun Portfolio(data: List<String>) {
                     .padding(8.dp)
                     .fillMaxWidth(),
                 shape = RectangleShape,
-                elevation = 4.dp
+                elevation = 2.dp
             ) {
                 Row(
                     modifier = Modifier
@@ -159,7 +159,7 @@ fun Portfolio(data: List<String>) {
                 ) {
                     CreateImageProfile(
                         modifier = Modifier
-                            .size(100.dp)
+                            .size(75.dp), imageResourceId = R.drawable.github_icon
                     )
                     Column(
                         modifier = Modifier
@@ -177,7 +177,7 @@ fun Portfolio(data: List<String>) {
 
 
 @Composable
-private fun CreateImageProfile(modifier: Modifier = Modifier) {
+private fun CreateImageProfile(modifier: Modifier = Modifier, imageResourceId: Int) {
     Surface(
         modifier = modifier
             .size(150.dp)
@@ -188,12 +188,11 @@ private fun CreateImageProfile(modifier: Modifier = Modifier) {
         color = MaterialTheme.colors.onSurface.copy(alpha = 0.5f)
     ) {
         Image(
-            painter = painterResource(id = R.drawable.round_avatar),
+            painter = painterResource(id = imageResourceId),
             contentDescription = "Profile Image",
             modifier = modifier.size(135.dp),
             contentScale = ContentScale.Crop
         )
-
     }
 }
 
